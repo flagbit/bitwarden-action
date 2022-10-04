@@ -1,0 +1,19 @@
+name: Bitwarden Vault Secrets
+description: A Github Action that allows you to consume Bitwarden Vault secrets as secure environment variables
+inputs:
+  bw_clientid:
+    description: Bitwarden Client Id
+    required: true
+  bw_clientsecret:
+    description: Bitwarden Client Secret
+    required: true
+  bw_password:
+    description: Bitwarden Password
+    required: true
+  secrets:
+    description: These will automatically be converted to environmental variable keys. See README for more details
+    required: true
+
+runs:
+  using: docker
+  image: Dockerfile
