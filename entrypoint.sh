@@ -11,17 +11,21 @@ export BW_SESSION=$(bw unlock --raw --passwordenv INPUT_BW_PASSWORD)
 IFS='
 '
 
+DELIMITER=EOF
+
 for line in $INPUT_SECRETS
 do
     COLLECTION_NAME=$(echo $line | cut -d"|" -f1 | sed 's/ *$//g' | sed 's/^ *//g')
     ITEM_NAME=$(echo $line | cut -d"|" -f2 | sed 's/ *$//g' | sed 's/^ *//g')
     ITEM_TYPE=$(echo $line | cut -d"|" -f3 | sed 's/ *$//g' | sed 's/^ *//g')
     ENV_VAR_NAME=$(echo $line | cut -d"|" -f4 | sed 's/ *$//g' | sed 's/^ *//g')
-    
+
     COLLECTION_ID=$(bw list collections | jq --raw-output '.[] | select(.name=="'$COLLECTION_NAME'") | .id')
     SECRET_VALUE=$(bw list items | jq --raw-output '.[] | select( .collectionIds | index("'$COLLECTION_ID'") ) | select ( .name=="'$ITEM_NAME'" ) | .'$ITEM_TYPE'')
 
-    echo "$ENV_VAR_NAME=\"$SECRET_VALUE\"" >> $GITHUB_ENV
+    echo "$ENV_VAR_NAME<<$DELIMITER" >> $GITHUB_ENV
+    echo "$SECRET_VALUE" >> $GITHUB_ENV
+    echo "$DELIMITER" >> $GITHUB_ENV
 done
 
 # cat $GITHUB_ENV
