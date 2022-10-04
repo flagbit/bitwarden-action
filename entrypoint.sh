@@ -23,12 +23,14 @@ do
 
     DELIMITER=$(cat /proc/sys/kernel/random/uuid | sed 's/[-]//g' | head -c 20; echo;)
 
+    # set as multiline environemnt variable
     echo "$ENV_VAR_NAME<<$DELIMITER" >> $GITHUB_ENV
     echo "$SECRET_VALUE" >> $GITHUB_ENV
     echo "$DELIMITER" >> $GITHUB_ENV
 
-    while read -r line;
+    # make sure that all lines of the secret are masked in github-actions
+    echo "$SECRET_VALUE" | while read -r line;
     do
         echo "::add-mask::${line}"
-    done <<< $SECRET_VALUE
+    done
 done
