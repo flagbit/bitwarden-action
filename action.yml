@@ -1,21 +1,19 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: Bitwarden Vault Secrets
+description: A Github Action that allows you to consume Bitwarden Vault secrets as secure environment variables
 inputs:
   bw_clientid:
-    description: 'Bitwarden Client Id'
+    description: Bitwarden Client Id
     required: true
   bw_clientsecret:
-    description: 'Bitwarden Client Secret'
+    description: Bitwarden Client Secret
     required: true
   bw_password:
-    description: 'Bitwarden Password'
+    description: Bitwarden Password
     required: true
   secrets:
-    description: foobar
+    description: These will automatically be converted to environmental variable keys. See README for more details
     required: true
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: docker
+  image: Dockerfile
