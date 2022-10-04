@@ -13,6 +13,3 @@ outputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - -e BW_CLIENTID=${{ inputs.bw_clientid }}
-    - -e BW_CLIENTSECRET=${{ inputs.bw_clientsecret }}
