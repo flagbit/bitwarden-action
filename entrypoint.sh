@@ -26,6 +26,6 @@ do
     echo "$ENV_VAR_NAME<<$DELIMITER" >> $GITHUB_ENV
     echo "$SECRET_VALUE" >> $GITHUB_ENV
     echo "$DELIMITER" >> $GITHUB_ENV
-done
 
-# cat $GITHUB_ENV
+    echo "::add-mask::$SECRET_VALUE"
+done
