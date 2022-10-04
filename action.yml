@@ -10,6 +10,9 @@ inputs:
   bw_password:
     description: 'Bitwarden Password'
     required: true
+  secrets:
+    description: foobar
+    required: true
 outputs:
   time: # id of output
     description: 'The time we greeted you'
