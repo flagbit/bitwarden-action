@@ -7,6 +7,9 @@ inputs:
   bw_clientsecret:
     description: 'Bitwarden Client Secret'
     required: true
+  bw_password:
+    description: 'Bitwarden Password'
+    required: true
 outputs:
   time: # id of output
     description: 'The time we greeted you'
