@@ -27,5 +27,8 @@ do
     echo "$SECRET_VALUE" >> $GITHUB_ENV
     echo "$DELIMITER" >> $GITHUB_ENV
 
-    echo "::add-mask::\$SECRET_VALUE"
+    while read -r line;
+    do
+        echo "::add-mask::${line}"
+    done <<< $SECRET_VALUE
 done
