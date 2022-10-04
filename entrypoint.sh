@@ -27,5 +27,5 @@ do
     echo "$SECRET_VALUE" >> $GITHUB_ENV
     echo "$DELIMITER" >> $GITHUB_ENV
 
-    echo "::add-mask::$SECRET_VALUE"
+    echo "::add-mask::\$SECRET_VALUE"
 done
