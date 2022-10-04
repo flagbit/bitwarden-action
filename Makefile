@@ -6,3 +6,6 @@ build:
 
 run:
 	docker run --rm --env-file .env $(IMAGE_NAME):$(IMAGE_VERSION)
+
+run/debug:
+	docker run --rm -it --env-file .env $(IMAGE_NAME):$(IMAGE_VERSION) sh
