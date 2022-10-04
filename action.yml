@@ -1,17 +1,18 @@
 name: 'Hello World'
 description: 'Greet someone and record the time'
 inputs:
-  who-to-greet:
-    description: 'Who to greet'
+  bw_clientid:
+    description: 'Bitwarden Client Id'
     required: true
-    default: 'World'
-  something-else:
-    description: 'Testing stuff'
+  bw_clientsecret:
+    description: 'Bitwarden Client Secret'
     required: true
-    default: 'foobar'
 outputs:
   time: # id of output
     description: 'The time we greeted you'
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  args:
+    - -e BW_CLIENTID=${{ inputs.bw_clientid }}
+    - -e BW_CLIENTSECRET=${{ inputs.bw_clientsecret }}
