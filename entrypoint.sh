@@ -11,5 +11,6 @@ COLLECTION_ID=$(bw list collections | jq --raw-output '.[] | select(.name=="'$CO
 echo $COLLECTION_ID
 time=$(date)
 
+echo $INPUT_SECRETS
 
 echo "::set-output name=time::$time"
