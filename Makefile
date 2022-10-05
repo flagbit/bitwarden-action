@@ -1,5 +1,11 @@
-IMAGE_NAME=bitwarden-action
-IMAGE_VERSION=0.1.0
+IMAGE_NAME ?= bitwarden-action
+IMAGE_VERSION ?= $$(cat version.txt)
+GITHUB_USERNAME ?= flagbit
+CONTAINER_MANAGER ?= docker
+DOCKERFILE_PATH ?= ./Dockerfile
+GHCR_ACCOUNT ?= flagbit
+
+-include $(MAKE_RULES_PATH)/ghcr.mk
 
 build:
 	docker build -t $(IMAGE_NAME):$(IMAGE_VERSION) .
