@@ -16,4 +16,4 @@ inputs:
 
 runs:
   using: docker
-  image: ghcr.io/flagbit/bitwarde-action:0.1.17
+  image: docker://ghcr.io/flagbit/bitwarde-action:0.2.0
