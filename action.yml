@@ -17,3 +17,5 @@ inputs:
 runs:
   using: docker
   image: docker://ghcr.io/flagbit/bitwarden-action:0.2.1
+  env:
+    XDG_CONFIG_HOME: /.config
